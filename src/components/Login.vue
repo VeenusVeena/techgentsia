@@ -58,6 +58,7 @@
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -78,7 +79,9 @@ export default {
   mounted() {
     var app = this;
     app.activeIndex2 = "2-3";
-    app.registered_users = localStorage.users;
+    if (this.userX) {
+      this.registered_users = this.userX;
+    }
   },
   methods: {
     signUp() {
@@ -113,6 +116,9 @@ export default {
         });
       }
     },
+  },
+  computed: {
+    ...mapGetters(["userX"]),
   },
 };
 </script>

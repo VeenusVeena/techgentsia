@@ -35,6 +35,7 @@ Vue.config.productionTip = false;
 import axios from "axios";
 
 Vue.prototype.$axios = axios;
+import { store } from "./vuexStore.js";
 
 const routes = [
   {
@@ -64,5 +65,6 @@ const router = new VueRouter({
 new Vue({
   el: "#app",
   router,
+  store,
   render: (h) => h(App),
 });

@@ -94,6 +94,8 @@
   </div>
 </template>
 <script>
+import { mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -132,9 +134,15 @@ export default {
     save() {
       var app = this;
       app.form.created = new Date();
-      var obj = Object.assign({}, app.form);
-      app.user.push(obj);
-      localStorage.users = this.user;
+      app.setName(app.form.name);
+      app.setEmail(app.form.email);
+      app.setPassword(app.form.password);
+      app.setDob(app.form.dob);
+      app.setGender(app.form.gender);
+
+      // var obj = Object.assign({}, app.form);
+      // app.user.push(obj);
+      // localStorage.users = this.user;
       this.form.name = "";
       this.form.dob = "";
       this.form.gender = "male";
@@ -146,6 +154,16 @@ export default {
         type: "success",
       });
     },
+    ...mapMutations([
+      "setName",
+      "setEmail",
+      "setPassword",
+      "setDob",
+      "setGender",
+    ]),
+  },
+  computed: {
+    ...mapGetters(["userX"]),
   },
 };
 </script>
