@@ -24,7 +24,7 @@
                 v-slot="{ errors }"
               >
                 <label>Email *:</label>
-                <el-input v-model="form.last_name"></el-input>
+                <el-input v-model="form.email"></el-input>
                 <span class="error">{{ errors[0] }}</span>
               </validation-provider>
             </el-col>
@@ -99,16 +99,19 @@ export default {
         app.registered_users.email == app.form.email &&
         app.registered_users.password == app.form.password
       ) {
+        this.form.email = "";
+        this.form.password = "";
+        this.$refs.form.reset();
         app.$message({
           message: "You have logged-in successfully!",
           type: "success",
         });
-        // this.$router.push({
-        //   name: "Dashboard",
-        //   params: {
-        //     user: this.user,
-        //   },
-        // });
+        this.$router.push({
+          name: "Dashboard",
+          params: {
+            user: this.userX,
+          },
+        });
       } else {
         app.$message({
           message: "Sorry Invalid Username and Email!",

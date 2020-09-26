@@ -7,6 +7,8 @@ import LandingPage from "./components/LandingPage";
 import SignUp from "./components/SignUp";
 import Login from "./components/Login";
 
+import Dashboard from "./components/Dashboard";
+
 import { ValidationProvider } from "vee-validate";
 import { extend } from "vee-validate";
 import { ValidationObserver } from "vee-validate";
@@ -54,6 +56,16 @@ const routes = [
     path: "/login",
     components: {
       Index: Login,
+    },
+  },
+  {
+    name: "Dashboard",
+    path: "/dashboard",
+    components: {
+      Index: Dashboard,
+    },
+    props: {
+      Index: true,
     },
   },
 ];
